@@ -1,90 +1,63 @@
-#  Optimizing Wind Turbine Blade Geometry Using Chord–Twist Aerodynamic Design
+# 🌬️ Wind Turbine Blade Optimization (Chord–Twist Design)
 
-This project focuses on a simplified but realistic version of wind turbine blade optimization.  
-The goal is to improve **Annual Energy Production (AEP) by tuning the chord and twist distributions along the blade radius using:
+This project performs a simplified but realistic optimization of a wind turbine blade by tuning the **chord** and **twist** distributions along the blade radius. The goal is to **maximize Annual Energy Production (AEP)** using:
 
-- A Blade Element Momentum (BEM) aerodynamic model  
-- Real S826 airfoil polar data (XFOIL)  
-- A Weibull wind-speed distribution  
-- A constrained nonlinear optimization approach (SLSQP)
+- A **Blade Element Momentum (BEM)** aerodynamic model  
+- Real **S826 airfoil polar data**  
+- A **Weibull wind-speed distribution**  
+- A **constrained nonlinear optimizer (SLSQP)**
 
-This is a meaningful slice of a much larger real-world turbine design task, simplified to fit course scope while still staying physically grounded.
-
-
-##  Project Overview
-
-Real wind-turbine blade design is extremely complex.  
-This project tackles one important sub-problem:
-
-> Finding the best chord and twist profiles for maximum AEP.
-
-The blade is divided into 8 sections, and each section’s chord and twist values are treated as independent design variables. A BEM solver computes power at each wind speed, and the optimizer finds the geometry that maximizes AEP.
+This work represents one focused sub-problem of full wind turbine design and is inspired by the MIT blade optimization study (reference included).
 
 ---
 
-##  Key Features
-
-  1. Iterative BEM Aerodynamic Model
-- Axial and tangential induction factors solved iteratively  
-- Prandtl tip-loss model included  
-- Angle of attack → interpolated from real S826 lift/drag polars  
-- Computes power over a range of wind speeds
-
-  2. Realistic Optimization Setup
-- 16 design variables (8 chords + 8 twists)  
-- Bounds on chord and twist  
-- Smoothness penalty to avoid unrealistic shapes  
-- Mass proxy constraint limiting total chord size  
-- Objective: **maximize AEP** (implemented as minimize `-AEP`)
-
-  3. Wind Resource Modeling
-- Wind speeds 3–25 m/s  
-- Weibull distribution with (k = 2, c = 7 m/s)  
-- AEP computed as probability-weighted integral of the power curve
-
----
-
-# Repository Structure
+## 📁 Contents of This Repository
 
 ```
-📁 Optimizing-Wind-Turbine-Blade-Geometry
-│
-├── README.md                      → Project summary
-├── report/
-│   ├── Wind-Blade-Optimization-Report.pdf
-│   └── Wind-Blade-Optimization-Report.tex
-│
-├── docs/
-│   └── MIT_reference.pdf            → Inspiration project (MIT OCW)
-└── 
+├── Wind-Turbine-Blade-Optimization-Report.pdf   → Full project report
+├── wind_blade_optimization.ipynb                → Jupyter/Kaggle notebook (code)
+└── MIT_reference.pdf                            → MIT OCW project used as inspiration
 ```
 
+---
 
-##  Results (Short Summary)
+## 🚀 How to Use
 
-- The optimized blade has smoother twist and slightly increased mid-span chord  
-- AEP improves by **5–15%** based on constraint settings  
-- Greatest power improvements appear in the **6–12 m/s wind range**  
-- Geometry remains realistic due to smoothness penalties
+### **Run the Jupyter Notebook**
+1. Open `wind_blade_optimization.ipynb`.
+2. Run all cells from top to bottom.  
+3. The notebook will:
+   - Load S826 airfoil polar data (embedded in code)
+   - Run the iterative BEM aerodynamic solver
+   - Compute AEP over a Weibull wind distribution
+   - Optimize chord & twist using SLSQP
+   - Compare baseline vs optimized AEP
+
+No external dataset is needed — everything is included inside the notebook.
 
 ---
 
-##  Why This Project Matters
+## 📊 Summary of the Work
 
-Even though this is a simplified version of real turbine design, it still captures the key engineering idea:
+- Blade divided into **8 sections**
+- 16 design variables (chord + twist)
+- Bounds + smoothness penalties keep blade realistic
+- BEM solver computes performance at different wind speeds
+- Optimization improves AEP compared to baseline geometry
 
-- Blade shape strongly affects performance  
-- Small geometry changes can give meaningful AEP gains  
-- Optimization + physics → better designs than manual guesses  
-- BEM is the essential first tool used in wind engineering  
+All explanations, equations, diagrams, and complete code are provided in the PDF report.
 
-This project creates a foundation for extending into more advanced topics like multi-airfoil blades, structural constraints, or dynamic stall models.
+---
+
+## 📎 Reference
+
+This project is conceptually inspired by the wind turbine optimization project from MIT OpenCourseWare.  
+The reference PDF (`Wind Turbine Blade Design Optimization.pdf`) is included in the repository.
 
 ---
 
-##  Reference
+## 👤 Author
 
-The work is conceptually inspired by an MIT OpenCourseWare project on wind turbine blade optimization  
-(see the `docs/` folder for the reference PDF).
-
----
+**Vinay Reddy Y**  
+BT2024174  
+Team: **QWERT**
