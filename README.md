@@ -16,7 +16,7 @@ This work represents one focused sub-problem of full wind turbine design and is 
 ```
 ├── Wind-Turbine-Blade-Optimization-Report.pdf   → Full project report
 ├── wind_blade_optimization.ipynb                → Jupyter/Kaggle notebook (code)
-└── MIT_reference.pdf                            → MIT OCW project used as inspiration
+└── Wind Turbine Blade Design Optimization.pdf   → MIT OCW project used as inspiration
 ```
 
 ---
