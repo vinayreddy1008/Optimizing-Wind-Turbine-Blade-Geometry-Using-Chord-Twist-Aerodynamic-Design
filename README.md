@@ -54,13 +54,9 @@ The blade is divided into 8 sections, and each section’s chord and twist value
 │   ├── Wind-Blade-Optimization-Report.pdf
 │   └── Wind-Blade-Optimization-Report.tex
 │
-├── notebook/
-│   └── wind_blade_optimization.ipynb   → Full Kaggle notebook (code)
-│
 ├── docs/
 │   └── MIT_reference.pdf            → Inspiration project (MIT OCW)
-│
-└── requirements.txt                 → Dependencies
+└── 
 ```
 
 
